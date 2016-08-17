@@ -1,0 +1,35 @@
+.container{
+    background: $lt-grey;
+    border: 1px solid $lt-grey-bd;
+    border-radius: 5px;
+    padding: 0;
+    margin-bottom: 2rem;
+
+}
+
+.container__header{
+    
+    border-bottom: 1px solid $lt-grey-bd;
+    padding: 1rem;
+    
+    label{
+        cursor: pointer;
+        font-size: 1rem;
+    }
+    > :last-child{
+        display: flex;
+        align-items: center;
+    }
+}
+
+.container__msg{
+    color: $lt;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.container__footer{
+    padding: 1rem 1rem 0 1rem ;
+    boarder-top: 1px solid  $lt-grey-bd;
+
+}
