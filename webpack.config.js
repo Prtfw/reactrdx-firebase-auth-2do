@@ -8,7 +8,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 try {
   envFile(path.join(__dirname, 'config/' + process.env.NODE_ENV + '.env'));
-  console.log('2', path.join(__dirname, 'config/' + process.env.NODE_ENV + '.env'))
+  //console.log('2', path.join(__dirname, 'config/' + process.env.NODE_ENV + '.env'))
 } catch (e) {console.log("3", e)}
 
 
@@ -83,4 +83,4 @@ module.exports = {
 };
 
 console.log('4', JSON.stringify(process.env.NODE_ENV))
-console.log('5', JSON.stringify(process.env.API_KEY))
+//console.log('5', JSON.stringify(process.env.API_KEY))

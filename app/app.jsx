@@ -1,16 +1,24 @@
     var React = require("react")
     var ReactDom = require("react-dom")
-    var {Route, Router, IndexRoute, hashHistory} = require("react-router")
+    var {hashHistory} = require("react-router")
     var {Provider} = require("react-redux")
     var $ = require("jquery")
     
     
-    import Tdapp from "tdapp"
-    import Login from 'login'
     var actions = require("actions")
     var store = require("configStore").config()
-    var todoAPI = require("todoAPI")
+
     
+    import fbase from 'app/fbase'
+    import router from 'app/router' //old jsx code to keep it organized
+    
+    fbase.auth().onAuthStateChanged((usr)=>{
+        if (usr){
+            hashHistory.push('/todos')
+        }else{
+            hashHistory.push('/')
+        }
+    })
    // import "./../sandbox/index.js"
     
     console.log(store)
@@ -52,15 +60,10 @@
     */
     
    
-
    
     ReactDom.render(
         <Provider store={store}>
-            <Router histor={hashHistory}>
-                 <Route path="/" component={Login}/>
-                        <Route path="todos" component={Tdapp}/>
-                       
-            </Router>
+            {router}
         </Provider>,
         document.getElementById('app')
         )
