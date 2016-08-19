@@ -5,8 +5,8 @@
     var $ = require("jquery")
     
     
-    var Tdapp = require("tdapp")
-    
+    import Tdapp from "tdapp"
+    import Login from 'login'
     var actions = require("actions")
     var store = require("configStore").config()
     var todoAPI = require("todoAPI")
@@ -56,12 +56,19 @@
    
     ReactDom.render(
         <Provider store={store}>
-        <Tdapp />
+            <Router histor={hashHistory}>
+                 <Route path="/" component={Login}/>
+                        <Route path="todos" component={Tdapp}/>
+                       
+            </Router>
         </Provider>,
         document.getElementById('app')
         )
         
-        
+//                 <Tdapp />
+                        //<IndexRoute component={Login}/>
+
+
         
 //when button gets clicked, call a parent function on the prop called child'name=parentfunctionName = setState
 //hook up statevar=updated name to the rendering compo = passin

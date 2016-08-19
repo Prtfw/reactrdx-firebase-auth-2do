@@ -1,7 +1,10 @@
-var React = require("react"),
+/* var React = require("react"),
     uuid = require("node-uuid"),
     moment = require("moment")
+    */
     
+    import React from 'react'
+    import * as Redux from 'react-redux'
 
  
     
@@ -13,8 +16,9 @@ var React = require("react"),
     
     import SearchTD from "searchTD"
     //SearchTD = require("searchTD"),
+    import * as actions from "actions"
     
-var main2do = React.createClass({
+export var main2do = React.createClass({
     /*getInitialState: function(){   //does not handle state because of redux
       return{
             todos: todoApi.getTodos(),
@@ -78,12 +82,19 @@ var main2do = React.createClass({
     },
     
      */
-    render: function(){
+     
+    onLogout(e){
+        e.preventDefault();
+        var {dispatch} = this.props;
+        dispatch(actions.startLogout());
+    },
+    render(){
         //console.log('in tdapp', this.handAdd2do)
         // var {todos, shocomp, searchtxt} = this.state
         // var filtered = todoApi.filter(todos, shocomp, searchtxt) // now happens in todo list
     return(
         <div>
+            <div className="page-actions"> <a href="#" onClick={this.onLogout}>Logout</a></div>
             <h1 className = 'pg-title'> Much Todos </h1>
                 <div className = 'row'>
                     <div className= 'column small-centered small-11 medium-6 large-4'>
@@ -101,4 +112,4 @@ var main2do = React.createClass({
 })
 
 
-module.exports = main2do
+export default Redux.connect()(main2do);

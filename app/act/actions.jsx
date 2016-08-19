@@ -1,4 +1,4 @@
-import fbase, {fbaseref} from 'app/fbase/'
+import fbase, {fbaseref, githubProv} from 'app/fbase/'
 import moment from 'moment'
 export var chngsearch= (searchtxt)=>{
     return {
@@ -88,6 +88,20 @@ export var startaddTD = (txt)=>{
     return todoref.then(()=> {dispatch(addTD({...todo, id: todoref.key}))})
                                 }
 }
+
+
+export var startLogin = () =>{
+    return (dispatch, getState) => {
+       return fbase.auth().signInWithPopup(githubProv).then((res)=> {console.log("auth good", res)},
+        (e)=> {console.log('auth failure',e)})}
+    }
+
+export var startLogout = () =>{
+    return (dispatch, getState) => {
+       return fbase.auth().signOut().then(()=> {console.log("logged out")},
+        (e)=> {console.log('logout fail',e)})}
+    }
+
 
 
 

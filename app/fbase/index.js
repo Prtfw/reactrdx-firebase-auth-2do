@@ -20,5 +20,6 @@ try {
 
     console.log(config)
   
+ export var githubProv = new fbase.auth.GithubAuthProvider();
  export var fbaseref =  fbase.database().ref()
  export default fbase; 
