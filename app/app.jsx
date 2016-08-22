@@ -2,6 +2,7 @@
     var ReactDom = require("react-dom")
     var {hashHistory} = require("react-router")
     var {Provider} = require("react-redux")
+    
     var $ = require("jquery")
     
     
@@ -13,9 +14,14 @@
     import router from 'app/router' //old jsx code to keep it organized
     
     fbase.auth().onAuthStateChanged((usr)=>{
+        //var {dispatch} = this.props
+        
         if (usr){
+            store.dispatch(actions.authT(usr.uid))
             hashHistory.push('/todos')
         }else{
+            store.dispatch(actions.authF())
+
             hashHistory.push('/')
         }
     })

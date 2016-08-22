@@ -41,3 +41,17 @@ export var rdcrTodos = (state = [], action) => {
             return state
     }
 }
+
+export var rdcrAuth = (state = {}, action) =>{
+    console.log('in rdcrAuth')
+    switch(action.type){
+        case "AUTH_T": 
+            console.log('catching uid')
+            return {uid: action.uid}
+        case "AUTH_F":
+            return  {}
+        default:
+            console.log('in rdcrAuth, rt default')
+            return state
+    }
+}

@@ -1,5 +1,5 @@
 import * as redux from "redux"
-import {rdcrSearch, rdcrShocomp, rdcrTodos} from "rdcrs"
+import {rdcrSearch, rdcrShocomp, rdcrTodos, rdcrAuth} from "rdcrs"
 import thunk from 'redux-thunk'
 
 
@@ -7,7 +7,8 @@ export var config = (initS = {})=>{
     var reducer = redux.combineReducers({ // format = key: value, state on the state tree:rdcr resp for handling that state i.e. get from setdefault state
         searchtxt: rdcrSearch,
         shocomp: rdcrShocomp,
-        todos: rdcrTodos
+        todos: rdcrTodos,
+        auth: rdcrAuth
     })
     
     var store = redux.createStore(reducer, initS, redux.compose(

@@ -1,5 +1,6 @@
 import fbase, {fbaseref, githubProv} from 'app/fbase/'
 import moment from 'moment'
+
 export var chngsearch= (searchtxt)=>{
     return {
         type: "CHNG_SEARCH",
@@ -92,7 +93,9 @@ export var startaddTD = (txt)=>{
 
 export var startLogin = () =>{
     return (dispatch, getState) => {
-       return fbase.auth().signInWithPopup(githubProv).then((res)=> {console.log("auth good", res)},
+       return fbase.auth().signInWithPopup(githubProv).then((res)=> {console.log("auth good", res)
+           
+       },
         (e)=> {console.log('auth failure',e)})}
     }
 
@@ -104,7 +107,17 @@ export var startLogout = () =>{
 
 
 
-
+export var authT = (uid) => {
+    console.log('AuthT', uid)
+    return {
+        type: "AUTH_T",
+        uid
+    }
+}
+    
+export var authF = () => {
+    return  {type: "AUTH_F"}
+}
 
 
 
