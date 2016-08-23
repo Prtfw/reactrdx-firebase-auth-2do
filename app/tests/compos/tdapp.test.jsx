@@ -6,9 +6,9 @@ var React = require('react'),
     
     
     {Provider} = require("react-redux"),
-    configStore = require("configStore"),
+    configStore = require("configStore")
    //must pull the OG todos compo from the variable using ES6 destructuring 
-    Tdapp = require('tdapp')
+    import Tdapp from "tdapp"
     
     import Todos from "todos"
 
@@ -20,11 +20,16 @@ describe('Tdapp', () => {
     
     it('should render todolist', () => {
         var store = configStore.config()
+        console.log(store)
         var provider = TestUtils.renderIntoDocument(
         <Provider store={store}>
-            <Tdapp />
-        </Provider>)
+            <Tdapp/>
+        </Provider>
+        )
+        console.log(provider)
         
+        //var todoApp = TestUtils.scryRenderedComponentsWithType(provider, TodoApp)[0]
+
         var todoapp = TestUtils.scryRenderedComponentsWithType(provider, Tdapp)[0]
         var todolst = TestUtils.scryRenderedComponentsWithType(todoapp, Todos)
         

@@ -73,11 +73,23 @@ it ("should gen update todo action", ()=>{
     expect(res).toEqual(action)
     })
     
+    
+    
+it ('should gen authF action obj', () =>{
+    const action={
+        type: "AUTH_F"
+    }
+    
+    const res = actions.authF()
+    
+    expect(res).toEqual(action)
+})
+    
 it ('tests with FB todos', ()=>{
     var testTodoRef
     
     beforeEach((done)=>{
-        var todosref = fbase.child('todos')
+        var todosref = fbaseref.child('todos')
         
         //todosref.remove().then(()=>{
             testTodoRef = fbaseref.child('todos').push()

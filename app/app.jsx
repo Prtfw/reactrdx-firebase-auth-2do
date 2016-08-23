@@ -18,6 +18,8 @@
         
         if (usr){
             store.dispatch(actions.authT(usr.uid))
+            store.dispatch(actions.startaddTDs())
+
             hashHistory.push('/todos')
         }else{
             store.dispatch(actions.authF())
@@ -52,7 +54,6 @@
     
     
     
-    store.dispatch(actions.startaddTDs())
         
    $(document).foundation();
    require('style!css!sass!appscss')

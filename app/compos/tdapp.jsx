@@ -18,7 +18,7 @@
     //SearchTD = require("searchTD"),
     import * as actions from "actions"
     
-export var main2do = React.createClass({
+export var Tdapp = React.createClass({
     /*getInitialState: function(){   //does not handle state because of redux
       return{
             todos: todoApi.getTodos(),
@@ -112,4 +112,4 @@ export var main2do = React.createClass({
 })
 
 
-export default Redux.connect()(main2do);
+export default Redux.connect()(Tdapp);

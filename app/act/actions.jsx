@@ -36,7 +36,9 @@ export var updTD = (id, upd) => {
 
 export var startdoneTD = (id, done) => {
     return (dispatch, getState) => {
-        var todoref = fbaseref.child(`todos/${id}`)
+        var uid = getState().auth.uid; //gets the redux store
+
+        var todoref = fbaseref.child(`users/${uid}/todos/${id}`)
         var upd = {done, doneDate: done ? moment().unix()  : null}
         
         return todoref.update(upd).then(()=>{
@@ -54,9 +56,12 @@ export var addTDs = (todos) => {
 
 
 export var startaddTDs = () => {
-    return(dispatch) =>{
+    return(dispatch, getState) =>{
         //fbaseref.child('todos').once('value').then((pt)=>{console.log('1',pt.val())}, (e)=>{console.log(e)})
-        fbaseref.child('todos').once('value').then((todos)=>{
+        
+        var uid = getState().auth.uid; //gets the redux store
+
+        fbaseref.child(`users/${uid}/todos`).once('value').then((todos)=>{
             var objtodos =  todos.val() || {}
             console.log(objtodos)
          var ids = Object.keys(objtodos)
@@ -84,7 +89,8 @@ export var startaddTD = (txt)=>{
     return (dispatch, getState)=>{
         var todo = { txt,  done: false, madeDate: moment().unix(), doneDate: null }
     
-    var todoref = fbaseref.child('todos').push(todo)
+    var uid = getState().auth.uid; //gets the redux store
+    var todoref = fbaseref.child(`users/${uid}/todos`).push(todo)
     
     return todoref.then(()=> {dispatch(addTD({...todo, id: todoref.key}))})
                                 }
