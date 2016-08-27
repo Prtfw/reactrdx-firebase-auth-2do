@@ -37,7 +37,8 @@ module.exports = {
         API_KEY: JSON.stringify(process.env.API_KEY),
         AUTH_DOM: JSON.stringify(process.env.AUTH_DOM),
         DB_URL: JSON.stringify(process.env.DB_URL),
-        DB_BUCKET: JSON.stringify(process.env.DB_BUCKET)
+        DB_BUCKET: JSON.stringify(process.env.DB_BUCKET),
+        GH_ACCESS_TOKEN: JSON.stringify(process.env.GH_ACCESS_TOKEN)
       }
     })
   ],

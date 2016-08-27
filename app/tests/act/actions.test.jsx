@@ -86,42 +86,33 @@ it ('should gen authF action obj', () =>{
 })
     
 it ('tests with FB todos', ()=>{
-    var testTodoRef
-    
-    beforeEach((done)=>{
-        var todosref = fbaseref.child('todos')
-        
-        //todosref.remove().then(()=>{
-            testTodoRef = fbaseref.child('todos').push()
+    var testtodosref;
 
-              testTodoRef.set({
-            txt: 'testy mctestson', done: false, madeDate: 0
-        })
-        //})
-        //.then(()=>{
-            done()
-            
-        //})
-        //.catch(done())
-    })
-    
-    afterEach((done)=>{
-        //testTodoRef.remove().then(()=> done())
-        done()
-    })
-    
+    beforeEach((done)=>{
+
+    testtodosref = fbaseref.child('todos').push()
+
+              testtodosref.set({
+                     txt: 'testy mctestson', 
+                     done: false, 
+                     madeDate: 0
+                }).then(()=> done())
+    });
+    afterEach((done) => {
+        console.log(testtodosref)
+      testtodosref.remove().then(()=> done());
+    });
+
     it('should toggle todo and dispatch UPDTODO action',(done)=>{
         const store = createmockstore({})
-        const action = actions.startdoneTD(testTodoRef.key, true)
+        const action = actions.startdoneTD(testtodosref.key, true)
         store.dispatch(action).then(()=>{
             const mockActions = store.getActions()
-            expect(mockActions[0]).toInclude({type: "UPDTD", id: testTodoRef.key})
+            expect(mockActions[0]).toInclude({type: "UPDTD", id: testtodosref.key})
             expect(mockActions[0].upd).toInclude({done: true})
             expect(mockActions[0].upd.doneDate).toExist()
-
-        done()
+        done();
         }, done)
     })
 })    
-    
 })
