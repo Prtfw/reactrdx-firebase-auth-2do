@@ -85,7 +85,7 @@ it ('should gen authF action obj', () =>{
     expect(res).toEqual(action)
 })
     
-it ('tests with FB todos', ()=>{
+describe ('tests with FB todos', ()=>{
     var testtodosref;
 
     beforeEach((done)=>{
